@@ -2,14 +2,59 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+        #topic {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        li a {
+            display: block;
+            padding: 8px;
+            background-color: #dddddd;
+        }
+        
+        .topic-item {
+            float: left;
+        }
+        
+        .topic-color:hover {
+            background-color: #6692dd9f;
+        }
+    </style>
 </head>
 
 <body>
-
+    <ul id="topic">
+        <li class="topic-item">
+            <a href="index.html" class="topic-color">About Me |</a>
+        </li>
+        <li class="topic-item">
+            <a href="Skill.html" class="topic-color">Skill | </a>
+        </li>
+        <li class="topic-item">
+            <a href="ContactMe.html" class="topic-color">Contact Me |</a>
+        </li>
+        <li class="topic-item">
+            <a href="Portfolio.html" class="topic-color">Portfolio |</a>
+        </li>
+    </ul>
+    <h1 style="margin-top: 50px">Skill</h1>
+    <ul>
+        <li>Javascript</li>
+        <li>HTML</li>
+        <li>MySQL</li>
+        <li>Node.JS</li>
+        <li>Koa</li>
+        <li>Cloud Deployment</li>
+        <li>Algorithm: Data Structure</li>
+    </ul>
 </body>
 
 </html>
