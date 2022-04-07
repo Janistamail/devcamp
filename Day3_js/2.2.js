@@ -1,17 +1,17 @@
 let sum = "";
 const draw = function(n) {
     for (let i = 1; i <= n; i++) {
-        let m = 1;
+        let m = n;
         for (let j = 1; j <= n; j++) {
-            if (m <= i) {
+            if (m >= i) {
                 sum += "* ";
             } else {
                 sum += "_ ";
             }
-            m++;
+            m--;
         }
         sum += "\n";
     }
     console.log(sum);
 };
-draw(5);
+draw(4);
