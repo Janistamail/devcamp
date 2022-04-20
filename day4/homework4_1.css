@@ -1,0 +1,15 @@
+.flex-container {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+
+.col {
+    flex-direction: column;
+    margin: 10px;
+}
+
+img {
+    width: 100%;
+    margin: 10px;
+}
