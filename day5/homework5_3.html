@@ -24,8 +24,6 @@
 
             function myfunc1(callback) {
                 axios.get("https://reqres.in/api/users").then(function(response) {
-                    // debugger;
-                    console.log(response);
                     let m = response.data.data;
                     for (let i = 0; i < m.length; i++) {
                         let usr = {
@@ -46,25 +44,27 @@
 
             function myfunc2() {
                 for (let i = 0; i < aUser.length; i++) {
+                    console.log(i);
                     axios
                         .get(`https://api.genderize.io?name=${aUser[i].first_name}`)
                         .then(function(response) {
-                            console.log(i);
                             aUser[i].gender = response.data.gender;
-                            // document.getElementById(`gen-${i}`).innerHTML = aUser[i].gender;
+                            document.getElementById(`gen-${i}`).innerHTML = aUser[i].gender;
                         });
                     axios
                         .get(`https://api.agify.io/?name=${aUser[i].first_name}`)
                         .then(function(response) {
                             aUser[i].age = response.data.age;
-                            // document.getElementById(`age-${i}`).innerHTML = aUser[i].age;
+                            document.getElementById(`age-${i}`).innerHTML = aUser[i].age;
                         });
                 }
+                debugger;
             }
 
-            function myfunc3() {
+            function myfunc3(callback) {
                 aLastName = aUser.map((x) => x.last_name);
                 console.log(aLastName);
+                callback();
             }
 
             function renderData() {
@@ -86,9 +86,8 @@
                 document.getElementById("display").innerHTML = sum;
             }
             myfunc1(function() {
-                // renderData();
                 myfunc2();
-                // myfunc3();
+
             });
         </script>
 </body>
