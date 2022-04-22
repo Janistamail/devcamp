@@ -87,7 +87,9 @@
             }
             myfunc1(function() {
                 myfunc2();
-
+                myfunc3(function() {
+                    renderData();
+                });
             });
         </script>
 </body>
