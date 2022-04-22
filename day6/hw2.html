@@ -10,35 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Document</title>
 </head>
-<!-- <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Firstname</th>
-            <th scope="col">Lastname</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table> -->
 
 <body>
     <div id="display"></div>
@@ -46,19 +17,17 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div id="modal-name">Name : </div>
-                    <div id="modal-gender">Gender : </div>
-                    <div id="modal-height">Height : </div>
+                    <div id="modal-name">Name :</div>
+                    <div id="modal-gender">Gender :</div>
+                    <div id="modal-height">Height :</div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary">
-              Close
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+              close
             </button>
-                    <button type="button" class="btn btn-primary data-bs-dismiss=" modal "">close</button>
                 </div>
             </div>
         </div>
@@ -67,17 +36,18 @@
         let sum = "";
 
         function myFunc(i) {
-            axios.get(`https://swapi.dev/api/people/${i}`).then(function(response) {
-                debugger;
-
-                let m = response.data;
-                console.log(m);
-                document.getElementById("modal-name").innerHTML += m.name;
-                document.getElementById("modal-gender").innerHTML += m.gender;
-                document.getElementById("modal-height").innerHTML += m.height;
-
-
-            });
+            axios
+                .get(`https://swapi.dev/api/people/${i}`)
+                .then(function(response) {
+                    let m = response.data;
+                    console.log(m);
+                    document.getElementById("modal-name").innerHTML =
+                        "Name : " + m.name;
+                    document.getElementById("modal-gender").innerHTML =
+                        "Gender : " + m.gender;
+                    document.getElementById("modal-height").innerHTML =
+                        "Height : " + m.height;
+                });
         }
         sum += `<table class="table">
             <thead><tr>
@@ -93,17 +63,17 @@
             //firstname
             for (i in r) {
                 console.log(i);
-                sum += `<th scope="row">${parseInt(i)+1}</th>`;
+                sum += `<th scope="row">${parseInt(i) + 1}</th>`;
                 sum += `<td>${r[i].name}</td>`;
                 sum += `<td>${r[i].gender}</td>`;
-                sum += `<td><button id="btn-${i}" onclick="myFunc(${parseInt(i)+1})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">view</button></td>`;
+                sum += `<td><button id="btn-${i}" onclick="myFunc(${
+            parseInt(i) + 1
+          })" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">view</button></td>`;
                 sum += `</tr><tr>`;
             }
             sum += `</tr></tbody></table>`;
 
             document.getElementById("display").innerHTML = sum;
-
-
         });
     </script>
 </body>

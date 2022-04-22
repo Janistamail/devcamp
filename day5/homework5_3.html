@@ -6,19 +6,91 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
-    <script>
-        let covidData = {
-            thailand: {},
-            World: {},
-        };
-        axios.get("https://reqres.in/api/users").then(function(response) {
-            console.log(response);
-        });
-    </script>
+    <div>
+        <h1>Hello ReqRes users!</h1>
+        <div style="text-align: center;">
+            <div id="display" class="row">
+
+            </div>
+        </div>
+        <script>
+            let aUser = [];
+            let aLastName = [];
+
+            function myfunc1(callback) {
+                axios.get("https://reqres.in/api/users").then(function(response) {
+                    // debugger;
+                    console.log(response);
+                    let m = response.data.data;
+                    for (let i = 0; i < m.length; i++) {
+                        let usr = {
+                            id: m[i].id,
+                            email: m[i].email,
+                            first_name: m[i].first_name,
+                            last_name: m[i].last_name,
+                            gender: null,
+                            age: null,
+                            avatar: m[i].avatar,
+                        };
+                        aUser.push(usr);
+                    }
+                    callback();
+                    // debugger;
+                });
+            }
+
+            function myfunc2() {
+                for (let i = 0; i < aUser.length; i++) {
+                    axios
+                        .get(`https://api.genderize.io?name=${aUser[i].first_name}`)
+                        .then(function(response) {
+                            console.log(i);
+                            aUser[i].gender = response.data.gender;
+                            // document.getElementById(`gen-${i}`).innerHTML = aUser[i].gender;
+                        });
+                    axios
+                        .get(`https://api.agify.io/?name=${aUser[i].first_name}`)
+                        .then(function(response) {
+                            aUser[i].age = response.data.age;
+                            // document.getElementById(`age-${i}`).innerHTML = aUser[i].age;
+                        });
+                }
+            }
+
+            function myfunc3() {
+                aLastName = aUser.map((x) => x.last_name);
+                console.log(aLastName);
+            }
+
+            function renderData() {
+                let sum = "";
+                console.log(aUser);
+                for (let i = 0; i < aUser.length; i++) {
+                    sum += `<div class="col-sm">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="card-text">${aUser[i].first_name}</p>
+                                        <p class="card-text">${aUser[i].email}</p>
+                                        <p class="card-text" id="gen-${i}">${aUser[i].gender}</p>
+                                        <p class="card-text" id="age-${i}">${aUser[i].age}</p>
+                                        <img src="${aUser[i].avatar}">
+                                    </div>
+                                </div>
+                            </div>`;
+                }
+                document.getElementById("display").innerHTML = sum;
+            }
+            myfunc1(function() {
+                // renderData();
+                myfunc2();
+                // myfunc3();
+            });
+        </script>
 </body>
 
 </html>
