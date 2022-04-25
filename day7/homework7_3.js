@@ -51,7 +51,7 @@ function myop() {
                 <td>${newPeople[i].gender}</td>
                 <td>${newPeople[i].company}</td>
                 <td>${newPeople[i].email}</td>
-                <td>${frd()}</td>
+                <td>${frd(newPeople[i].friends)}</td>
                 <td>${newPeople[i].balance}</td>
             </tr>
         `;
@@ -59,7 +59,14 @@ function myop() {
     document.getElementById("op").innerHTML = sum;
 }
 
-function frd() {}
+function frd(x) {
+    console.log(x);
+    let ans = x.reduce((sum, num) => {
+        return sum + "<br>" + num.name;
+    }, "");
+    console.log(ans);
+    return ans;
+}
 // debugger;
 mufunc(function() {
     console.log(newPeople);
