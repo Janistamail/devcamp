@@ -12,7 +12,15 @@ function RandomBoxComponent() {
   return (
     <div
       className="box"
-      style={{ width: num(), height: num(), background: color() }}
+      style={{
+        width: num(),
+        height: num(),
+        background: color(),
+        textAlign: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
       Random Box
     </div>
