@@ -15,29 +15,33 @@ function App() {
       // console.log(message);
       // console.log(e.target.value);
       setToDoList(aaa);
+      e.target.value = "";
+
       // data.push({ date: Date(), msg: message });
     } else if (e.key === "Enter" && message == "") {
+      e.target.value = "";
       alert("NO ToDoList");
     }
   }
 
-  function deleteList() {
-    let ans = toDoList.filter(x=> x!=);
+  function deleteList(x) {
+    let ans = toDoList.filter((y) => y.msg !== x.msg);
+    setToDoList(ans);
   }
 
   return (
     <div>
       <div>
         {toDoList.map((x) => (
-          <div >
+          <div className="card">
             <p>{x.date}</p>
             <p>{x.msg}</p>
-            <button onClick={deleteList}>DELETE</button>
+            <button onClick={() => deleteList(x)}>DELETE</button>
           </div>
         ))}
       </div>
 
-      <input type="text" onKeyDown={checkEnter}></input>
+      <input className="note" type="text" onKeyDown={checkEnter}></input>
     </div>
   );
 }
