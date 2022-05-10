@@ -24,13 +24,14 @@ const SlideComp = () => {
       label="degree"
       rules={[
         {
-          required: true,
+          // required: true,
 
           validator: customValidation,
         },
       ]}
+      initialValue={37}
     >
-      <Slider marks={marks} step={10} defaultValue={37} />
+      <Slider marks={marks} step={10} />
     </Form.Item>
   );
 };

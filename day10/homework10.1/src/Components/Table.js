@@ -1,7 +1,17 @@
-import { Table, Tag, Space, Button, Avatar } from "antd";
+import { Table, Tag, Space, Button, Avatar, notification } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
 const TableComp = () => {
+  const openNotification = () => {
+    notification.open({
+      message: "Notification Title",
+      description:
+        "This is the content of the notification. This is the content of the notification. This is the content of the notification.",
+      onClick: () => {
+        console.log("Notification Clicked!");
+      },
+    });
+  };
   const columns = [
     {
       title: "Name",
@@ -46,7 +56,9 @@ const TableComp = () => {
         <Space size="middle">
           {/* <a>Invite {record.name}</a>
           <a>Delete</a> */}
-          <Button type="primary">{record.name}</Button>
+          <Button type="primary" onClick={openNotification}>
+            {record.name}
+          </Button>
         </Space>
       ),
     },

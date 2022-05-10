@@ -25,9 +25,10 @@ const RateComp = () => {
           validator: customValidation,
         },
       ]}
+      initialValue={2}
     >
       <Rate
-        defaultValue={3}
+        // defaultValue={3}
         character={({ index }) => customIcons[index + 1]}
       />
     </Form.Item>

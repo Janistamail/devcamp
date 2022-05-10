@@ -2,7 +2,11 @@ import { Form, InputNumber } from "antd";
 
 const InputNum = () => {
   const customValidation = (rule, value) => {
-    return value ? Promise.resolve() : Promise.reject(new Error("Error"));
+    if (value < 18) return Promise.reject(new Error("อายุน้อยเกินไป"));
+    else if (value > 60) return Promise.reject(new Error("อายุมากเกินไป"));
+    else {
+      return Promise.resolve();
+    }
   };
 
   return (

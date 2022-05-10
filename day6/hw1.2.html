@@ -21,11 +21,14 @@
 
         function myfunc() {
             let out = document.getElementById("inp").value;
-            document.getElementById("inp").value = out
-                .toString()
-                .replace(",", "")
-                .replace(pattern, ",");
             console.log(out);
+
+            let text = Intl.NumberFormat().format(Number(out.replace(/,/g, "")));
+            document.getElementById("inp").value = text;
+            // .toString()
+            // .replace(",", "")
+            // .replace(pattern, ",");
+            console.log(text);
         }
         document.getElementById("inp").addEventListener("keyup", myfunc);
     </script>
