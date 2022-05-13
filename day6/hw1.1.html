@@ -13,25 +13,45 @@
     <h1>Type your e-mail</h1>
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1"></span>
-        <input id="input" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" />
+        <input id="input" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" value="" />
     </div>
     <div id="abc"></div>
-    <button id="btn" class="btn btn-primary" type="submit">submit</button>
+    <button id="btn" class="btn btn-primary" type="submit" onclick="onClickFunc()">
+      submit
+    </button>
     <script>
-        let btn = document.getElementById("btn");
-        btn.addEventListener("click", myfunc);
+        //SOLUTION#1
+        // let btn = document.getElementById("btn");
+        // btn.addEventListener("click", myfunc);
 
-        function myfunc() {
+        // function myfunc() {
+        //     let out = document.getElementById("input").value;
+        //     // let pattern = /^\S+@\S+\.\S+$/;
+        //     let pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        //     let result = pattern.test(out);
+        //     const m = document.getElementById("abc");
+
+        //     if (result) {
+        //         m.innerHTML = "";
+        //     } else {
+        //         m.innerHTML = "E-mail is not valid format";
+        //         m.style.color = "red";
+        //     }
+        // }
+
+        //SOLUTION#2
+        function onClickFunc() {
+            console.log("test");
             let out = document.getElementById("input").value;
-            let pattern = /^\S+@\S+\.\S+$/;
+            let pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
             let result = pattern.test(out);
-            const m = document.getElementById("abc");
+            console.log(out);
+            console.log(result);
 
             if (result) {
-                m.innerHTML = "";
+                document.getElementById("abc").innerText = "";
             } else {
-                m.innerHTML = "E-mail is not valid format";
-                m.style.color = "red";
+                document.getElementById("abc").innerText = "Error";
             }
         }
     </script>

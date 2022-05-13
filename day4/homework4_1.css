@@ -1,15 +1,15 @@
 .flex-container {
     flex-wrap: wrap;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* justify-content: center; */
 }
 
-.col {
-    flex-direction: column;
+.co {
     margin: 10px;
 }
 
 img {
-    width: 100%;
+    width: 20%;
     margin: 10px;
 }

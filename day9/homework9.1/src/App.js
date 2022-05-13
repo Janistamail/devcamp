@@ -36,7 +36,7 @@ function App() {
   const myFunc = picture.map((x) => {
     return <PictureCardComponent value={x} key={x.id} />;
   });
-  console.log(picture, "myFunc", myFunc);
+  // console.log(picture, "myFunc", myFunc);
   return <div className="App">{myFunc}</div>;
 }
 
