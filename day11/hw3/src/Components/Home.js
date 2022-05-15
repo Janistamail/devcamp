@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
-
 function Home() {
   return (
     <>
-      <p>Home</p>
+      <h3>Home</h3>
     </>
   );
 }

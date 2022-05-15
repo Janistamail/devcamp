@@ -1,27 +1,27 @@
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout } from "antd";
 import { Link, Outlet } from "react-router-dom";
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 
 const LayoutComp = () => {
   return (
     <Layout>
-      <Header>Header</Header>
+      <Header style={{ color: "white" }}>Header</Header>
       <Content>
         <div>
           <nav>
             <ul>
-              <li>
+              <h4>
                 <Link to="/">Home</Link>
-              </li>
-              <li>
+              </h4>
+              <h4>
                 <Link to="/employeeList">Employee List</Link>
-              </li>
-              <li>
+              </h4>
+              <h4>
                 <Link to="/departmentList">Department List</Link>
-              </li>
-              <li>
+              </h4>
+              {/* <li>
                 <Link to="/nothing-here">Nothing Here</Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
           <hr />

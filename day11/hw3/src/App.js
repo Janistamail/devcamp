@@ -1,16 +1,19 @@
 import "./App.css";
 import "antd/dist/antd.css";
 import { createContext } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import LayoutComp from "./Components/Layout";
 import Home from "./Components/Home";
 import EmployeeList from "./Components/EmployeeList";
 import DepartmentList from "./Components/DepartmentList";
+import EmployeeDetail from "./Components/EmployeeDetail";
 import NoMatching from "./Components/NoMatching";
-import React, { useContext } from "react";
+import Marketing from "./Components/Marketing";
+
+export const ContextData = createContext();
 
 function App() {
-  const context = createContext();
   const employees = [
     {
       ID: "0001",
@@ -91,17 +94,26 @@ function App() {
     },
   ];
   return (
-    <context.Procider value={employees}>
+    <ContextData.Provider value={employees}>
       <Routes>
         <Route path="/" element={<LayoutComp />}>
           <Route index element={<Home />} />
           <Route path="employeeList" element={<EmployeeList />} />
+          <Route
+            path="employeeList/employeeDetail"
+            element={<EmployeeDetail />}
+          />
           <Route path="departmentList" element={<DepartmentList />} />
+          <Route
+            path="departmentList/departmentDetail"
+            element={<Marketing />}
+          />
+
           <Route path="*" element={<NoMatching />} />
         </Route>
       </Routes>
       <hr />
-    </context.Procider>
+    </ContextData.Provider>
   );
 }
 
