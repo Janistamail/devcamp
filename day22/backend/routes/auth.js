@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const pool = require("./pool");
 const bcrypt = require("bcrypt");
 
-router.post("/token", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   const { username, password } = await req.body;
   let [rows, fields] = await pool.query(
     `SELECT * FROM user WHERE username='${username}'`

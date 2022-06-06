@@ -18,9 +18,9 @@ export default function LayoutComp() {
   return (
     <div>
       <table>
-        <tbody>
-          <tr id="ans"></tr>
-        </tbody>
+        {/* <tbody> */}
+        <tr id="ans"></tr>
+        {/* </tbody> */}
       </table>
     </div>
   );

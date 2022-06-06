@@ -3,15 +3,31 @@ var router = express.Router();
 const mysql = require("mysql2/promise");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const pool = require("./pool");
 
-const pool = mysql.createPool({
-  connectionLimit: 10,
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "day22",
-  port: 8889,
-});
+// const pool = mysql.createPool({
+//   connectionLimit: 10,
+//   host: "localhost",
+//   user: "root",
+//   password: "root",
+//   database: "day22",
+//   port: 8889,
+// });
+
+// const comparePassword = (password, inputPassword) => {
+// return new Promise(function (resolve, reject) {
+//   bcrypt.compare(password, inputPassword, function (err, result) {
+//     if (err) {
+//       reject(err);
+//     }
+//     if (result) {
+//       resolve(result);
+//     } else {
+//       resolve(false);
+//     }
+//   });
+// });
+// };
 
 router.post("/login", async function (req, res, next) {
   let { username, password } = req.body;
@@ -20,7 +36,8 @@ router.post("/login", async function (req, res, next) {
   );
   try {
     if (rows.length > 0) {
-      const passwordMatch = bcrypt.compare(password, rows[0].password);
+      const passwordMatch = await bcrypt.compare(password, rows[0].password);
+      console.log(passwordMatch);
       if (passwordMatch) {
         const privateKey = "privatekey";
         const token = jwt.sign(

@@ -8,12 +8,17 @@ const LoginComp = () => {
   let navigate = useNavigate();
   const onFinish = async (values) => {
     console.log("Success:", values);
-    const result = await axios.post("/api/auth/token", {
-      username: values.username,
-      password: values.password,
-    });
-    localStorage.setItem("token", result.data.token);
-    navigate("/profile");
+    try {
+      const result = await axios.post("/api/auth", {
+        username: values.username,
+        password: values.password,
+      });
+      console.log(result);
+      localStorage.setItem("token", result.data.token);
+      navigate("/profile", { state: values.username });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
