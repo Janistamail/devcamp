@@ -5,48 +5,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { edit } from "../productSlice";
 import ImgCrop from "antd-img-crop";
 import { useState } from "react";
+import { useForm } from "antd/lib/form/Form";
 
 const EditComp = () => {
   let navigate = useNavigate();
   let params = useParams();
   let location = useLocation();
   let dispatch = useDispatch();
-  let state = useSelector((state) => state.productSlice);
 
-  // const [fileList, setFileList] = useState([
-  //   {
-  //     uid: "-1",
-  //     name: "image.png",
-  //     status: "done",
-  //     url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-  //   },
-  // ]);
-
-  // const myOnChange = ({ fileList: newFileList }) => {
-  //   setFileList(newFileList);
-  // };
-
-  // const onPreview = async (file) => {
-  //   let src = file.url;
-
-  //   if (!src) {
-  //     src = await new Promise((resolve) => {
-  //       const reader = new FileReader();
-  //       reader.readAsDataURL(file.originFileObj);
-
-  //       reader.onload = () => resolve(reader.result);
-  //     });
-  //   }
-
-  //   const image = new Image();
-  //   image.src = src;
-  //   const imgWindow = window.open(src);
-  //   imgWindow?.document.write(image.outerHTML);
-  // };
+  let form = Form.useForm();
+  form.setFieldsValue({
+    product_name: "values.product_name",
+  });
 
   const onFinish = (values) => {
     console.log("Success:", values);
     console.log("iddd", params.id);
+
     // console.log("checksend", location);
     dispatch(
       edit({
@@ -66,6 +41,7 @@ const EditComp = () => {
   return (
     <>
       <Form
+        form={form}
         name="basic"
         labelCol={{
           span: 8,
@@ -121,17 +97,6 @@ const EditComp = () => {
           </Button>
         </Form.Item>
       </Form>
-      {/* <ImgCrop rotate>
-        <Upload
-          action="http://localhost:3000/users/upload"
-          listType="picture-card"
-          fileList={fileList}
-          onChange={myOnChange}
-          onPreview={onPreview}
-        >
-          {fileList.length < 5 && "+ Upload"}
-        </Upload>
-      </ImgCrop> */}
     </>
   );
 };
