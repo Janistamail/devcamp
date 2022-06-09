@@ -5,6 +5,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const fileupload = require("express-fileupload");
 const path = require("path");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -14,11 +17,11 @@ app.use(fileupload());
 
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: "localhost",
-  user: "root", // <== ระบุให้ถูกต้อง
-  password: "root", // <== ระบุให้ถูกต้อง
-  database: "project",
-  port: 8889, // <== ใส่ port ให้ถูกต้อง (default 3306, MAMP ใช้ 8889)
+  host: process.env.DBHOST,
+  user: process.env.DBUSER, // <== ระบุให้ถูกต้อง
+  password: process.env.DBPASSWORD, // <== ระบุให้ถูกต้อง
+  database: process.env.DBDATABASE,
+  port: process.env.DBPORT ? +process.env.DBPORT : 3306, // <== ใส่ port ให้ถูกต้อง (default 3306, MAMP ใช้ 8889)
 });
 
 app.get("/", async (req, res) => {
