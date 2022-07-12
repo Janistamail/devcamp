@@ -1,0 +1,33 @@
+.items {
+    border-radius: 5px;
+    background: lightblue;
+    width: 300px;
+    height: 500px;
+    text-align: center;
+    margin: 20px;
+}
+
+.pict {
+    width: 200px;
+    height: 200px;
+    margin: 30px;
+    padding-bottom: 10px;
+}
+
+.App {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.items button {
+    margin: 0px 3px 10px 3px;
+    background: lightseagreen;
+    width: 30%;
+}
+
+.items input {
+    margin: 3px;
+}

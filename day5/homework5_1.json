@@ -1,0 +1,46 @@
+[{
+        "firstname": "Janista",
+        "lastname": "Sihirunwong",
+        "age": "24",
+        "gender": "Female",
+        "address": {
+            "sub-district": "ตำบล",
+            "distrcit": "อำเภอ ",
+            "province": "จังหวัด"
+        },
+        "contact": {
+            "mobile": "0639429993",
+            "e-mail": "janista.shrw@gmail.com "
+        }
+    },
+    {
+        "firstname": "Paiboon",
+        "lastname": "Panusbordee",
+        "age": "35",
+        "gender": "male",
+        "address": {
+            "sub-district": "Mahasawasd",
+            "distrcit": "Bangkrew",
+            "province": "Nonthaburi"
+        },
+        "contact": {
+            "mobile": "0999999999",
+            "e-mail": "paiboonpa@thaiprogrammer.org"
+        }
+    },
+    {
+        "firstname": "Peter",
+        "lastname": "Parker",
+        "age": "17",
+        "gender": "male",
+        "address": {
+            "sub-district": "Chrystie Street",
+            "distrcit": "Manhattan",
+            "province": "New York"
+        },
+        "contact": {
+            "mobile": "0999999999",
+            "e-mail": "spiderman@marvel.com"
+        }
+    }
+]

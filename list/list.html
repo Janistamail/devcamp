@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="display"></div>
+    <script>
+        let txt = "";
+        class Node {
+            constructor(data) {
+                this.data = data;
+                this.next = null;
+            }
+        }
+
+        class LinkedList {
+            constructor(head = null) {
+                this.head = head;
+            }
+            size() {
+                // let count = 0;
+                let node = this.head;
+                while (node) {
+                    // count++;
+                    // console.log(JSON.stringify(node.data));
+                    let first = node.data;
+                    console.log(node.data.title, "--> from : ", node.data.have);
+                    while (node.data.have > 0) {
+                        node.data.have--;
+                        console.log(node.data.have);
+                    }
+                    node = node.next;
+
+                    // console.log(node.data);
+                    // console.log(first, " to ", node.data);
+                }
+            }
+        }
+
+        let node1 = new Node({
+            title: "Harry Potter",
+            have: 1,
+            want: 4,
+            waitingList: 3,
+        });
+        let node2 = new Node({
+            title: "Goblin",
+            have: 2,
+            want: 14,
+            waitingList: 11,
+        });
+        let node3 = new Node({
+            title: "John Wick",
+            have: 3,
+            want: 2,
+            waitingList: 1,
+        });
+        let node4 = new Node({
+            title: "Titanic",
+            have: 4,
+            want: 1,
+            waitingList: 4,
+        });
+        let node5 = new Node({
+            title: "Tom & Jerry",
+            have: 5,
+            want: 43,
+            waitingList: 44,
+        });
+        let node6 = new Node({
+            title: "Avenger",
+            have: 6,
+            want: 14,
+            waitingList: 61,
+        });
+        let node7 = new Node({
+            title: "Spiderman",
+            have: 7,
+            want: 7,
+            waitingList: 6,
+        });
+        let node8 = new Node({
+            title: "Dr. Strange",
+            have: 8,
+            want: 4,
+            waitingList: 1,
+        });
+        let node9 = new Node({
+            title: "Batman",
+            have: 9,
+            want: 23,
+            waitingList: 2,
+        });
+        let node10 = new Node({
+            title: "Captain America",
+            have: 10,
+            want: 18,
+            waitingList: 11,
+        });
+        let node11 = new Node({
+            title: "Rapanzel",
+            have: 11,
+            want: 43,
+            waitingList: 33,
+        });
+        let node12 = new Node({
+            title: "Snow white",
+            have: 12,
+            want: 6,
+            waitingList: 65,
+        });
+        let node13 = new Node({
+            title: "Beauty & the beast",
+            have: 13,
+            want: 11,
+            waitingList: 54,
+        });
+        let node14 = new Node({
+            title: "Twilight",
+            have: 14,
+            want: 41,
+            waitingList: 54,
+        });
+        let node15 = new Node({
+            title: "Sherlock Holmes",
+            have: 15,
+            want: 32,
+            waitingList: 41,
+        });
+        let node16 = new Node({
+            title: "Red Notice",
+            have: 16,
+            want: 7,
+            waitingList: 21,
+        });
+        let node17 = new Node({
+            title: "Green book",
+            have: 17,
+            want: 13,
+            waitingList: 19,
+        });
+        let node18 = new Node({
+            title: "Oxygen",
+            have: 18,
+            want: 11,
+            waitingList: 81,
+        });
+        let node19 = new Node({
+            title: "Home team",
+            have: 19,
+            want: 67,
+            waitingList: 21,
+        });
+        let node20 = new Node({
+            title: "Robinhood",
+            have: 20,
+            want: 9,
+            waitingList: 1,
+        });
+        let list = new LinkedList(node1);
+
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = node6;
+        node6.next = node7;
+        node7.next = node8;
+        node8.next = node9;
+        node9.next = node10;
+        node10.next = node11;
+        node11.next = node12;
+        node12.next = node13;
+        node13.next = node14;
+        node14.next = node15;
+        node15.next = node16;
+        node16.next = node17;
+        node17.next = node18;
+        node18.next = node19;
+        node19.next = node20;
+
+        list.size();
+    </script>
+</body>
+
+</html>

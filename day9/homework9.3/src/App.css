@@ -1,0 +1,17 @@
+.card {
+    width: 70%;
+    height: 150px;
+    margin: 3% 15%;
+    border: 10px solid burlywood;
+    text-align: center;
+}
+
+.note {
+    margin-top: 20px;
+    width: 70%;
+    height: 100px;
+    margin-left: 15%;
+    border: 5px solid rgb(100, 127, 185);
+    border-radius: 10px;
+    font-size: x-large;
+}

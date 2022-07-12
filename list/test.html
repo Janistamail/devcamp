@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const input = [99, 37, 88, 34, 27];
+        // let tree = {
+        //     head: {
+        //         value: 12,
+        //         left: null,
+        //         right: {
+        //             value: 99,
+        //             left: {
+        //                 value: 37,
+        //                 left: null,
+        //                 right: null,
+        //             },
+        //             right: null,
+        //         },
+        //     },
+        // };
+
+        class Node {
+            constructor(data, left = null, right = null) {
+                this.data = data;
+                this.left = left;
+                this.right = right;
+            }
+        }
+
+        class BST {
+            constructor() {
+                this.root = new Node(12);
+            }
+
+            add(data) {
+                const searchTree = function(node) {
+                    if (data < node.data) {
+                        if (node.left === null) {
+                            node.left = new Node(data);
+                        } else {
+                            searchTree(node.left);
+                        }
+                    } else {
+                        if (node.right === null) {
+                            node.right = new Node(data);
+                        } else {
+                            searchTree(node.right);
+                        }
+                    }
+                };
+                searchTree(this.root);
+            }
+        }
+
+        let bsTree = new BST();
+
+        for (let i = 0; i < input.length; i++) {
+            console.log(input[i]);
+            bsTree.add(input[i]);
+        }
+        console.log(bsTree);
+    </script>
+</body>
+
+</html>
