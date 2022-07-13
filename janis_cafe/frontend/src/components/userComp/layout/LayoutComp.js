@@ -1,9 +1,4 @@
-import {
-  Outlet,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import authenSlice, {
   initData,
@@ -13,6 +8,7 @@ import authenSlice, {
 import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+const inf = useSelector((state) => state.authen.role);
 
 const LayoutComp = () => {
   // const location = useLocation();
@@ -66,9 +62,6 @@ const LayoutComp = () => {
           // console.log(result.data);
           dispatch(setRole(result.data.role));
           dispatch(setIdAccount(result.data.id_account));
-          // console.log(result.data.line_id);
-          // console.log(result.data.role);
-          // dispatch(setRole(result.data.role));
         }
       }
     };
@@ -88,99 +81,10 @@ const LayoutComp = () => {
       navigate("/bartender");
     }
   }, [role]);
-  //Method
-  // 1. Trigger by liff.login(); path: /login/user
-  // 2. Authen by line login -> redirect url
-  // 3. Callback URL
-
-  // useEffect(() => {
-  //   if (window) {
-  //     liff.current = window.liff;
-  //   }
-  // }, []);
-
-  // const initLine = async () => {
-  //   try {
-  //     await liff.init({ liffId: `${liffid}` });
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // };
-
-  // //เริ่ม Comp
-  // useEffect(() => {
-  //   let queryCode = {
-  //     code: "",
-  //     liffClientId: "",
-  //   };
-
-  //   if (window) {
-  //     liff.current = window.liff;
-  //   }
-
-  //   for (const entry of param.entries()) {
-  //     console.log("entry", entry);
-  //     if (entry[0] === "code") {
-  //       queryCode.code = entry[1];
-  //     }
-
-  //     if (entry[0] === "liffClientId") {
-  //       queryCode.liffClientId = entry[1];
-  //     }
-  //   }
-
-  //   if (queryCode.code !== "" && queryCode.liffClientId !== "") {
-  //     initLine()
-  //       .then(async () => {
-  //         if (liff.isLoggedIn()) {
-  //           // console.log("Location : ", location);
-  //           if (location.pathname === "/") {
-  //             let getProfile = await liff.getProfile();
-  //             // dispatch(initData())
-  //             console.log("getProfile", getProfile);
-  //             // if (data) {
-  //             //   let res = await axios
-  //             //     .post("/authen/login", { ...data })
-  //             //     .then((res) => {
-  //             //       // console.log(res.data);
-  //             //       dispatch(initLineId(res.data.line_id));
-  //             //       dispatch(setStatus(res.data.status));
-  //             //       if (res.data.status === "admin") {
-  //             //         navigate("/admin");
-  //             //       }
-
-  //             //       if (res.data.status === "user") {
-  //             //         console.log("to user page");
-  //             //         navigate("/coffee");
-  //             //       }
-
-  //             //       if (res.data.status === "bartender") {
-  //             //         navigate("/bartender");
-  //             //       }
-  //             //     })
-  //             //     .catch((err) => console.log(err));
-  //             // }
-
-  //             // TODO
-  //             // - api getRoleByLineID fetch axios
-  //             //   req : lineID
-  //             //   res : {role: 'user'}
-  //             // - redirect user -> navigate("/coffee"); | admin -> navigate("/admin");
-  //           }
-  //           console.log("Login...");
-  //           // navigate("/coffee");
-  //         } else {
-  //           console.log("not login...");
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  // }, []);
 
   return (
     <div>
+      {/* {if (inf===)} */}
       <Navbar />
       {/* {location.pathname == "/" ? <img src={logo}></img> : <Outlet />} */}
       <Outlet />

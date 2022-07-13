@@ -14,7 +14,7 @@ const UserProfile = () => {
         <br />
         <div className="BoxA">
           <h1>USERNAME : {inf.data.line_name} </h1>
-          <h1>ROLE : {inf.role}</h1>
+          {/* <h1>ROLE : {inf.role}</h1> */}
         </div>
       </div>
     </div>
